@@ -61,5 +61,22 @@ class Screen
       Console.SetCursorPosition(finalColumn, row);
       Console.Write("|");
     }
+
+    // Insert `+` signal in the frame corners.
+    this.insertSymbolInCorners(initialColumn, initialRow, finalColumn, finalRow);
+  }
+
+  private void insertSymbolInCorners(int initialColumn, int initialRow, int finalColumn, int finalRow)
+  {
+    this.insertSymbol(initialColumn, initialRow); // Superior left corner.
+    this.insertSymbol(initialColumn, finalRow); // Superior right corner.
+    this.insertSymbol(finalRow, initialColumn); // Inferior left corner.
+    this.insertSymbol(finalRow, finalColumn);  // Inferior right corner.
+  }
+
+  private void insertSymbol(int x, int y)
+  {
+    Console.SetCursorPosition(x, y);
+    Console.Write("+");
   }
 }
