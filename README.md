@@ -6,5 +6,7 @@ An application about DOS, console, money exchange in examples and clients. All o
 
 ## Getting Started
 ```bash
+$> git clone https://github.com/cristianprochnow/console-project.git
+
 $> dotnet run
 ```
