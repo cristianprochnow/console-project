@@ -8,7 +8,7 @@ class Screen
     this.backgroundColor = background;
     this.textColor = text;
 
-    this.clear();
+    this.setUpScreen();
   }
 
   public Screen()
@@ -16,10 +16,10 @@ class Screen
     this.backgroundColor = ConsoleColor.Black;
     this.textColor = ConsoleColor.Green;
 
-    this.clear();
+    this.setUpScreen();
   }
 
-  private void clear()
+  public void clear()
   {
     Console.Clear();
   }
@@ -76,7 +76,46 @@ class Screen
 
   private void insertSymbol(int x, int y)
   {
+    this.insert(x, y, "+");
+  }
+
+  private void insert(int x, int y, string text)
+  {
     Console.SetCursorPosition(x, y);
-    Console.Write("+");
+    Console.Write(text);
+  }
+
+  public string showMenu(List<string> options, int initialColumn, int initialRow)
+  {
+    string? option;
+    int finalColumn, finalRow, counter;
+
+    finalColumn = initialColumn + (options[0].Count() + 1);
+    finalRow = initialRow + (options.Count() + 2);
+
+    this.buildFrame(initialColumn, initialRow, finalColumn, finalRow);
+
+    for (counter = 0; counter < options.Count(); counter++)
+    {
+      this.insert(initialColumn + 1, initialRow + counter + 1, options[counter]);
+    }
+
+    this.insert(initialColumn + 1, initialRow + counter + 1, "Opção: ");
+
+    option = Console.ReadLine();
+
+    if (option == null) {
+      option = "0";
+    }
+
+    return option;
+  }
+
+  public void setUpScreen()
+  {
+    Console.BackgroundColor = this.backgroundColor;
+    Console.ForegroundColor = this.textColor;
+
+    this.clear();
   }
 }

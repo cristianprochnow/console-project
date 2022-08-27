@@ -1,3 +1,22 @@
-﻿Screen screen = new Screen();
+﻿string option;
 
-screen.buildFrame(1, 1, 16, 16);
+List<string> options = new List<string>();
+options.Add("1 - Cadastro de Clientes");
+options.Add("2 - Cadastro de Contas  ");
+options.Add("3 - Registrar Movimento ");
+options.Add("4 - Emitir Extrato      ");
+options.Add("0 - Sair do Sistema     ");
+
+Screen screen = new Screen(ConsoleColor.DarkBlue, ConsoleColor.Blue);
+
+while (true)
+{
+  screen.buildFrame(0, 0, 79, 24);
+  option = screen.showMenu(options, 4, 2);
+
+  if (option == "0") {
+    break;
+  }
+}
+
+screen.clear();
