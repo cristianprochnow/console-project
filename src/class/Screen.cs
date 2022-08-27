@@ -32,8 +32,7 @@ class Screen
     {
       for (row = initialRow; row <= finalRow; row++)
       {
-        Console.SetCursorPosition(column, row);
-        Console.Write(" ");
+        this.insert(column, row, " ");
       }
     }
   }
@@ -46,20 +45,14 @@ class Screen
 
     for (column = initialColumn; column <= finalColumn; column++)
     {
-      Console.SetCursorPosition(column, initialColumn);
-      Console.Write("-");
-
-      Console.SetCursorPosition(column, finalColumn);
-      Console.Write("-");
+      this.insert(column, initialColumn, "-");
+      this.insert(column, finalColumn, "-");
     }
 
     for (row = initialRow; row <= finalRow; row++)
     {
-      Console.SetCursorPosition(initialColumn, row);
-      Console.Write("|");
-
-      Console.SetCursorPosition(finalColumn, row);
-      Console.Write("|");
+      this.insert(initialColumn, row, "|");
+      this.insert(finalColumn, row, "|");
     }
 
     // Insert `+` signal in the frame corners.
