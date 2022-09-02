@@ -45,8 +45,8 @@ class Screen
 
     for (column = initialColumn; column <= finalColumn; column++)
     {
-      this.insert(column, initialColumn, "-");
-      this.insert(column, finalColumn, "-");
+      this.insert(column, initialRow, "-");
+      this.insert(column, finalRow, "-");
     }
 
     for (row = initialRow; row <= finalRow; row++)
@@ -63,8 +63,8 @@ class Screen
   {
     this.insertSymbol(initialColumn, initialRow); // Superior left corner.
     this.insertSymbol(initialColumn, finalRow); // Superior right corner.
-    this.insertSymbol(finalRow, initialColumn); // Inferior left corner.
-    this.insertSymbol(finalRow, finalColumn);  // Inferior right corner.
+    this.insertSymbol(finalColumn, initialRow); // Inferior left corner.
+    this.insertSymbol(finalColumn, finalRow);  // Inferior right corner.
   }
 
   private void insertSymbol(int x, int y)
@@ -72,7 +72,7 @@ class Screen
     this.insert(x, y, "+");
   }
 
-  private void insert(int x, int y, string text)
+  public void insert(int x, int y, string text)
   {
     Console.SetCursorPosition(x, y);
     Console.Write(text);

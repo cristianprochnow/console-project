@@ -7,7 +7,8 @@ options.Add("3 - Registrar Movimento ");
 options.Add("4 - Emitir Extrato      ");
 options.Add("0 - Sair do Sistema     ");
 
-Screen screen = new Screen(ConsoleColor.DarkBlue, ConsoleColor.Blue);
+Screen screen = new Screen(ConsoleColor.Black, ConsoleColor.White);
+Clients clients = new Clients(screen);
 
 while (true)
 {
@@ -16,6 +17,10 @@ while (true)
 
   if (option == "0") {
     break;
+  }
+
+  if (option == "1") {
+    clients.executeCRUD();
   }
 }
 
